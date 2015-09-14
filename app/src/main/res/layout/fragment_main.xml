@@ -9,9 +9,24 @@
                 tools:showIn="@layout/activity_main"
                 tools:context=".MainActivityFragment">
 
-    <TextView
-        android:text="Hello World!"
-        android:layout_width="wrap_content"
+    <Button
+        android:id="@+id/debug_switch"
+        android:text="Debug Switch"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+
+    <Button
+        android:id="@+id/api_fetch_baidu"
+        android:layout_below="@id/debug_switch"
+        android:text="api_fetch_baidu"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+
+    <Button
+        android:id="@+id/custom_http_params"
+        android:layout_below="@id/api_fetch_baidu"
+        android:text="custom_http_params"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"/>
 
 </RelativeLayout>
