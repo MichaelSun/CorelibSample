@@ -1,0 +1,3 @@
+[submodule "corelib"]
+	path = corelib
+	url = https://github.com/MichaelSun/corelib.git
