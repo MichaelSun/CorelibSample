@@ -19,6 +19,8 @@ import corelib.corelibsample.api.BaiduWebRequest;
  */
 public class MainActivityFragment extends Fragment {
 
+    private boolean debug = true;
+
     public MainActivityFragment() {
     }
 
@@ -30,6 +32,17 @@ public class MainActivityFragment extends Fragment {
         ButterKnife.bind(this, view);
 
         return view;
+    }
+
+    @OnClick(R.id.debug_switch)
+    public void debug_switch() {
+        if (debug) {
+            debug = false;
+        } else {
+            debug = true;
+        }
+
+        CoreConfig.init(getActivity().getApplicationContext(), debug);
     }
 
     @OnClick(R.id.api_fetch_baidu)
@@ -55,7 +68,7 @@ public class MainActivityFragment extends Fragment {
         customHttpParams.connection_timeout = 3 * 1000;
         customHttpParams.buffer_size = 8 * 1024;
         baiduWebRequest.setCustomHttpParams(customHttpParams);
-        InternetClient.getInstance(getContext()).postRequest(new BaiduWebRequest(), new InternetClient.NetworkCallback<String>() {
+        InternetClient.getInstance(getContext()).postRequest(baiduWebRequest, new InternetClient.NetworkCallback<String>() {
             @Override
             public void onSuccess(RequestBase<String> request, String ret) {
                 CoreConfig.LOGD("[[MainActivityFragment::custom_http_params::onSuccess]] ret = " + ret);
